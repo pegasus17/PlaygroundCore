@@ -19,7 +19,7 @@ pipeline{
         success {
           archiveArtifacts(
             followSymlinks: false,            
-            artifacts: 'install/.*')
+            artifacts: 'install/**/*.*')
         }
       }
     }
