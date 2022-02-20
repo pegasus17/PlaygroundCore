@@ -4,23 +4,23 @@ pipeline{
     stage("Build"){
       steps{
           cmakeBuild(
-            installation: '3.22.2',
+            installation: "3.22.2",
             cleanBuild: true,
-            buildDir: 'build',
-            generator: 'Ninja',
-            buildType: 'Debug',
+            buildDir: "build",
+            generator: "Ninja",
+            buildType: "Debug",
             steps: [
-                [args: 'all'],
-                [args: 'install']
+                [args: "all"],
+                [args: "install"]
             ]
           )
       }
       post {
         success {
-          dir('install') {
+          dir("install") {
             archiveArtifacts(
-              followSymlinks: false,            
-              artifacts: '**/*'
+              followSymlinks: false,
+              artifacts: "**/*"
             )
           }
         }
