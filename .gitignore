@@ -1,4 +1,6 @@
+.vscode
 .jenkins
 build
 install
 package
+

@@ -27,4 +27,17 @@ set (INSTALL_INLCUDES
 install(TARGETS ${PROJECT_NAME} DESTINATION ${INSTALL_DIR}/lib)
 install(FILES ${INSTALL_INLCUDES} DESTINATION ${INSTALL_DIR}/include)
 
+set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+set(CPACK_PACKAGE_VENDOR "Roland Gärtner")
+set(CPACK_OUTPUT_FILE_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/package)
+
+set(CPACK_SOURCE_IGNORE_FILES 
+  ".vscode"
+  "build"
+  "install"
+  ".gitignore"
+  "Jenkninsfile"
+  "README.md"
+)
+
 include(CPack)
