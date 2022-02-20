@@ -8,7 +8,7 @@ pipeline{
             cleanBuild: true,
             buildDir: 'build',
             generator: 'Ninja',
-            buildType: 'Debug'
+            buildType: 'Debug',
             steps: [[withCmake: true]]
           )
       }
