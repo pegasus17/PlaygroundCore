@@ -17,9 +17,12 @@ pipeline{
       }
       post {
         success {
-          archiveArtifacts(
-            followSymlinks: false,            
-            artifacts: 'install/**/*.*')
+          dir('install') {
+            archiveArtifacts(
+              followSymlinks: false,            
+              artifacts: '**/*.*'
+            )
+          }
         }
       }
     }
