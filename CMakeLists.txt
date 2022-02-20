@@ -31,13 +31,24 @@ set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
 set(CPACK_PACKAGE_VENDOR "Roland Gärtner")
 set(CPACK_OUTPUT_FILE_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/package)
 
+if (WIN32)
+  set(CPACK_GENERATOR "7Z")
+endif (WIN32)
+
+if (UNIX)
+  set(CPACK_GENERATOR "TGZ")
+endif (UNIX)
+
 set(CPACK_SOURCE_IGNORE_FILES 
   ".vscode"
   "build"
   "install"
-  ".gitignore"
-  "Jenkninsfile"
-  "README.md"
+  "package"
+  ".git*"
+  ".jenkins*"
+  "Jenkinsfile"
+  "README.*"
+  "CMakeLists.txt"
 )
 
 include(CPack)

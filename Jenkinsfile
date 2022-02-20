@@ -12,7 +12,8 @@ pipeline{
             steps: [
               [args: "all"],
               [args: "install"],
-              [args: "package_source"]
+              [args: "package_source"],
+              [args: "package"]
             ]
           )
       }
