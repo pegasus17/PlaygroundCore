@@ -20,7 +20,7 @@ pipeline{
           dir('install') {
             archiveArtifacts(
               followSymlinks: false,            
-              artifacts: '**/*.*'
+              artifacts: '**/*'
             )
           }
         }
