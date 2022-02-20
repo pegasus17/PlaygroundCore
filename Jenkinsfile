@@ -10,8 +10,9 @@ pipeline{
             generator: "Ninja",
             buildType: "Debug",
             steps: [
-                [args: "all"],
-                [args: "install"]
+              [args: "all"],
+              [args: "install"],
+              [args: "package_source"]
             ]
           )
       }
