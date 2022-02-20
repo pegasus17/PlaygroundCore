@@ -7,12 +7,12 @@ project(cicd_core VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set (INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/package)
+set (INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/install)
 install(FILES LICENSE DESTINATION ${INSTALL_DIR})
 
 # Core Library - Build
 add_library(${PROJECT_NAME} SHARED
- src/cicd_logger.cpp
+  src/cicd_logger.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
