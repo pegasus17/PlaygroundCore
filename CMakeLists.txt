@@ -36,7 +36,7 @@ if (WIN32)
 endif (WIN32)
 
 if (UNIX)
-  set(CPACK_GENERATOR "TGZ;DEB")
+  set(CPACK_GENERATOR "TGZ;RPM")
 endif (UNIX)
 
 set(CPACK_SOURCE_IGNORE_FILES 
