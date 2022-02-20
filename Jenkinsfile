@@ -15,6 +15,13 @@ pipeline{
             ]
           )
       }
+      post {
+        success {
+          archiveArtifacts(
+            followSymlinks: false,            
+            artifacts: 'install/.*')
+        }
+      }
     }
   }
 }
