@@ -9,7 +9,10 @@ pipeline{
             buildDir: 'build',
             generator: 'Ninja',
             buildType: 'Debug',
-            steps: [[withCmake: true]]
+            steps: [
+                [args: 'all'],
+                [args: 'install']
+            ]
           )
       }
     }
