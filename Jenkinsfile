@@ -29,9 +29,11 @@ pipeline{
 
     stage("Create Packages") {
       steps {
-        cpack(
-          installation: '3.22.2',
-          label: 'Delivery Pacckage'
+        cmakeBuild(
+          installation: "3.22.2",
+          steps: [
+            [args: "package"]
+          ]
         )
       }
     }
