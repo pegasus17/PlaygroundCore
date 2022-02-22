@@ -12,6 +12,7 @@ pipeline{
           steps: [
             [args: "all"],
             [args: "install"]
+            [args: "package"]
           ]
         )
       }
@@ -24,17 +25,6 @@ pipeline{
             )
           }
         }
-      }
-    }
-
-    stage("Create Packages") {
-      steps {
-        cmakeBuild(
-          installation: "3.22.2",
-          steps: [
-            [args: "package"]
-          ]
-        )
       }
     }
 
