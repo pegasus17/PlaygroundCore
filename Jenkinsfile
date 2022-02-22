@@ -50,7 +50,7 @@ pipeline {
           //project: 'my-project-key'
         )
         rtPublishBuildInfo (
-          serverId: 'JFrogCloud-1',
+          serverId: 'JFrogCloud',
           // The buildName and buildNumber below are optional. If you do not set them, the Jenkins job name is used
           // as the build name. The same goes for the build number.
           // If you choose to set custom build name and build number by adding the following buildName and
