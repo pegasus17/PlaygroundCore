@@ -3,19 +3,17 @@ pipeline{
   stages{
     stage("Build"){
       steps{
-          cmakeBuild(
-            installation: "3.22.2",
-            cleanBuild: true,
-            buildDir: "build",
-            generator: "Ninja",
-            buildType: "Debug",
-            steps: [
-              [args: "all"],
-              [args: "install"],
-              [args: "package_source"],
-              [args: "package"]
-            ]
-          )
+        cmakeBuild(
+          installation: "3.22.2",
+          cleanBuild: true,
+          buildDir: "build",
+          generator: "Ninja",
+          buildType: "Debug",
+          steps: [
+            [args: "all"],
+            [args: "install"]
+          ]
+        )
       }
       post {
         success {
@@ -26,6 +24,15 @@ pipeline{
             )
           }
         }
+      }
+    }
+
+    stage("Create Packages") {
+      steps {
+        cpack(
+          installation: '3.22.2',
+          label: 'Delivery Pacckage'
+        )
       }
     }
 
