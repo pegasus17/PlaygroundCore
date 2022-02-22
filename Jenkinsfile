@@ -11,7 +11,7 @@ pipeline{
           buildType: "Debug",
           steps: [
             [args: "all"],
-            [args: "install"]
+            [args: "install"],
             [args: "package"]
           ]
         )
