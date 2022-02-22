@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "pattern": "package/*-Source.tar.gz",
+      "target": "playground-linux-1-mecontrol/"
+    }
+ ]
+}
