@@ -28,6 +28,12 @@ pipeline{
       }
     }
 
+   stage("Packaging") {
+     steps{
+        zip(dir: 'install', zipFile: 'package/test.zip')
+      }
+    }
+
     stage("Artifactory Upload") {
       steps
       {
