@@ -1,7 +1,12 @@
-pipeline{
+pipeline {
   agent any
-  stages{
-    stage("Build"){
+
+  options {
+    skipDefaultCheckout()
+  }
+
+  stages {
+    stage("Build") {
       steps{
         cmakeBuild(
           installation: "3.22.2",
