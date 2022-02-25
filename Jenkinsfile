@@ -49,7 +49,7 @@ pipeline {
   post {
     success {
       rtUpload (
-        serverId: ${JFROG_SERVER},
+        serverId: "${JFROG_SERVER}",
         failNoOp: true,
         spec: """{
           "files": [
@@ -69,7 +69,7 @@ pipeline {
         }"""
       )
       rtPublishBuildInfo (
-        serverId: ${JFROG_SERVER}
+        serverId: "${JFROG_SERVER}"
       )
     }
   }
