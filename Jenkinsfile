@@ -4,7 +4,11 @@ pipeline {
   stages {
     stage("Preparation") {
       steps {
-        rtBuildInfo (captureEnv: true)
+        rtBuildInfo (
+          captureEnv: true,          
+          // Optional - Also delete the build artifacts when deleting a build.
+          deleteBuildArtifacts: true,
+        )
       }
     }
 
