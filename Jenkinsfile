@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  environment{
+    UPLOAD_BASE_PATH = "${GIT_BRANCH}/${BUILD_NUMBER}"
+  }
+
   stages {
     stage("Preparation") {
       steps {
@@ -48,9 +52,17 @@ pipeline {
         spec: """{
           "files": [
             {
-              "pattern": "install/*.*",
-              "target": "playground-linux-1-mecontrol/${env.GIT_BRANCH}/core/"
-            }
+              "pattern": "install/LICENSE",
+              "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/"
+            },
+            {
+              "pattern": "install/include/*.h",
+              "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/include/"
+            },
+            {
+              "pattern": "install/lib/*.so.*",
+              "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/lib/"
+            },
           ]
         }"""
       )
