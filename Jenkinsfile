@@ -9,7 +9,7 @@ pipeline {
           // Optional - Also delete the build artifacts when deleting a build.
           deleteBuildArtifacts: true,
         )
-        
+
       }
     }
 
@@ -42,8 +42,21 @@ pipeline {
 
   post {
     success {
-        rtUpload (serverId: 'JFrogCloud', specPath: 'config/artifactory_upload_spec.json')
-        rtPublishBuildInfo (serverId: 'JFrogCloud' )
+      rtUpload (
+        serverId: 'JFrogCloud',
+        failNoOp: true,
+        specPath: '''{
+          "files": [
+            {
+              "pattern": "install/*.*",
+              "target": "playground-linux-1-mecontrol/${env.GIT_BRANCH}/core/"
+            }
+          ]
+        }'''
+      )
+      rtPublishBuildInfo (
+        serverId: 'JFrogCloud'
+      )
     }
   }
 
