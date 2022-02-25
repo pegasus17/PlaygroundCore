@@ -41,15 +41,15 @@ pipeline {
               followSymlinks: false,
               artifacts: "**/*"
             )
-            zip (
-              zipFile: "package/core-linux-sources.zip",
-              archive: true,
-              overwrite: true,
-              dir: '.',
-              exclude: '',
-              glob: ''
-            )
           }
+          zip (
+            zipFile: "package/core-linux-sources.zip",
+            archive: true,
+            overwrite: true,
+            dir: '.',
+            exclude: '',
+            glob: ''
+          )
         }
       }
     }
