@@ -3,6 +3,6 @@
     {
       "pattern": "package/*-Linux.tar.gz",
       "target": "playground-linux-1-mecontrol/"
-    },
+    }
  ]
 }
