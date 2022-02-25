@@ -33,7 +33,7 @@ pipeline {
         cmakeBuild (
           installation: "3.22.2",
           cleanBuild: true,
-          buildDir: "build",
+          buildDir: "${BUILD_PATH}",
           generator: "Ninja",
           buildType: "Debug",
           steps: [
@@ -44,14 +44,8 @@ pipeline {
       }
       post {
         success {
-          dir("${INSTALL_PATH}") {
-            archiveArtifacts (
-              followSymlinks: false,
-              artifacts: "**/*"
-            )
-          }
           zip (
-            zipFile: "${PACKAGE_PATH}/core-linux-sources.zip",
+            zipFile: "${PACKAGE_PATH}/core-linux-package.zip",
             archive: true,
             overwrite: true,
             dir: "${INSTALL_PATH}",
