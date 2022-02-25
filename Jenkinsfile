@@ -3,8 +3,9 @@ pipeline {
 
   environment{
     JFROG_SERVER = "JFrogCloud"
-    JFROG_REPO = "mecontrol-playground-${GIT_BRANCH}"
-    UPLOAD_BASE_PATH = "${GIT_BRANCH}/${BUILD_NUMBER}"
+    JFROG_REPO = "mecontrol-playground-develop"
+    UPLOAD_BASE_PATH = "jenkins/core-${GIT_BRANCH}/${BUILD_NUMBER}"
+    // jenkins/core-develop/2/core-linux-sources.zip
   }
 
   stages {
@@ -21,7 +22,7 @@ pipeline {
 
     stage("Build") {
       steps{
-        cmakeBuild(
+        cmakeBuild (
           installation: "3.22.2",
           cleanBuild: true,
           buildDir: "build",
@@ -36,9 +37,17 @@ pipeline {
       post {
         success {
           dir("install") {
-            archiveArtifacts(
+            archiveArtifacts (
               followSymlinks: false,
               artifacts: "**/*"
+            )
+            zip (
+              zipFile: "package/core-linux-sources.zip"
+              archive: true,
+              overwrite: true,
+              dir: '.',
+              exclude: '',
+              glob: '',
             )
           }
         }
@@ -54,16 +63,8 @@ pipeline {
         spec: """{
           "files": [
             {
-              "pattern": "install/LICENSE",
-              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/core/"
-            },
-            {
-              "pattern": "install/include/*.h",
-              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/core/include/"
-            },
-            {
-              "pattern": "install/lib/*.so.*",
-              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/core/lib/"
+              "pattern": "package/.+-.+-.+.zip",
+              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/"
             }
           ]
         }"""
