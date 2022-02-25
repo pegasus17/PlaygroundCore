@@ -75,7 +75,7 @@ pipeline {
       dsCreateReleaseBundle(
         serverId: "${JFROG_SERVER}",
         name: "example-release-bundle",
-        version: ${BUILD_NUMBER},
+        version: "${BUILD_NUMBER}",
         spec: """{
           "files": [{
             "pattern": "${PACKAGE_PATH}/${MODULE_NAME}-*-*.zip"
