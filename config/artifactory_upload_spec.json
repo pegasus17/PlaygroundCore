@@ -2,7 +2,7 @@
   "files": [
     {
       "pattern": "install/*.*",
-      "target": "playground-linux-1-mecontrol/"
+      "target": "playground-linux-1-mecontrol/core/"
     }
  ]
 }
