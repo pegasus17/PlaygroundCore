@@ -45,7 +45,7 @@ pipeline {
       rtUpload (
         serverId: 'JFrogCloud',
         failNoOp: true,
-        specPath: '''{
+        spec: '''{
           "files": [
             {
               "pattern": "install/*.*",
