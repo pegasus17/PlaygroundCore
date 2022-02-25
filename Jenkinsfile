@@ -63,7 +63,7 @@ pipeline {
         spec: """{
           "files": [
             {
-              "pattern": "package/.+-.+-.+.zip",
+              "pattern": "package/*-.*-*.zip",
               "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/"
             }
           ]
