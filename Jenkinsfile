@@ -9,6 +9,7 @@ pipeline {
           // Optional - Also delete the build artifacts when deleting a build.
           deleteBuildArtifacts: true,
         )
+        
       }
     }
 
@@ -23,7 +24,6 @@ pipeline {
           steps: [
             [args: "all"],
             [args: "install"],
-            [args: "package"]
           ]
         )
       }
