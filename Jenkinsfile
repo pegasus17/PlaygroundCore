@@ -6,6 +6,10 @@ pipeline {
     JFROG_REPO = "mecontrol-playground-develop"
     UPLOAD_BASE_PATH = "jenkins/core-${GIT_BRANCH}/${BUILD_NUMBER}"
     // jenkins/core-develop/2/core-linux-sources.zip
+
+    BUILD_PATH = "build"
+    INSTALL_PATH = "${BUILD_PATH}/install"
+    PACKAGE_PATH = "${BUILD_PATH}/package"
   }
 
   stages {
@@ -16,6 +20,10 @@ pipeline {
           // Optional - Also delete the build artifacts when deleting a build.
           deleteBuildArtifacts: true,
         )
+        dir("${BUILD_PATH}")
+        {
+          deleteDir()
+        }
 
       }
     }
@@ -36,17 +44,17 @@ pipeline {
       }
       post {
         success {
-          dir("install") {
+          dir("${BUILD_INSTALL_PATH}") {
             archiveArtifacts (
               followSymlinks: false,
               artifacts: "**/*"
             )
           }
           zip (
-            zipFile: "package/core-linux-sources.zip",
+            zipFile: "${PACKAGE_PATH}/core-linux-sources.zip",
             archive: true,
             overwrite: true,
-            dir: '.',
+            dir: "${BUILD_INSTALL_PATH}",
             exclude: '',
             glob: ''
           )
@@ -63,7 +71,7 @@ pipeline {
         spec: """{
           "files": [
             {
-              "pattern": "package/core-*-*.zip",
+              "pattern": "${PACKAGE_PATH}/core-*-*.zip",
               "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/"
             }
           ]

@@ -7,7 +7,7 @@ project(cicd_core VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set (INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/install)
+set (INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build/install)
 install(FILES LICENSE DESTINATION ${INSTALL_DIR})
 
 # Core Library - Build
