@@ -44,7 +44,7 @@ pipeline {
       }
       post {
         success {
-          dir("${BUILD_INSTALL_PATH}") {
+          dir("${INSTALL_PATH}") {
             archiveArtifacts (
               followSymlinks: false,
               artifacts: "**/*"
@@ -54,7 +54,7 @@ pipeline {
             zipFile: "${PACKAGE_PATH}/core-linux-sources.zip",
             archive: true,
             overwrite: true,
-            dir: "${BUILD_INSTALL_PATH}",
+            dir: "${INSTALL_PATH}",
             exclude: '',
             glob: ''
           )
