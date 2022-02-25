@@ -62,7 +62,7 @@ pipeline {
             {
               "pattern": "install/lib/*.so.*",
               "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/lib/"
-            },
+            }
           ]
         }"""
       )
