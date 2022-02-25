@@ -45,14 +45,14 @@ pipeline {
       rtUpload (
         serverId: 'JFrogCloud',
         failNoOp: true,
-        spec: '''{
+        spec: """{
           "files": [
             {
               "pattern": "install/*.*",
               "target": "playground-linux-1-mecontrol/${env.GIT_BRANCH}/core/"
             }
           ]
-        }'''
+        }"""
       )
       rtPublishBuildInfo (
         serverId: 'JFrogCloud'
