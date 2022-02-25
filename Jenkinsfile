@@ -2,6 +2,8 @@ pipeline {
   agent any
 
   environment{
+    JFROG_SERVER = "JFrogCloud"
+    JFROG_REPO = "mecontrol-playground-${GIT_BRANCH}"
     UPLOAD_BASE_PATH = "${GIT_BRANCH}/${BUILD_NUMBER}"
   }
 
@@ -47,27 +49,27 @@ pipeline {
   post {
     success {
       rtUpload (
-        serverId: 'JFrogCloud',
+        serverId: ${JFROG_SERVER},
         failNoOp: true,
         spec: """{
           "files": [
             {
               "pattern": "install/LICENSE",
-              "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/"
+              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/core/"
             },
             {
               "pattern": "install/include/*.h",
-              "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/include/"
+              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/core/include/"
             },
             {
               "pattern": "install/lib/*.so.*",
-              "target": "playground-linux-1-mecontrol/${env.UPLOAD_BASE_PATH}/core/lib/"
+              "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/core/lib/"
             }
           ]
         }"""
       )
       rtPublishBuildInfo (
-        serverId: 'JFrogCloud'
+        serverId: ${JFROG_SERVER}
       )
     }
   }
