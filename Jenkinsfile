@@ -36,11 +36,11 @@ pipeline {
     }
 
     stage("Artifactory") {
-      environment{
-        collectEnv()
-      }
       steps
       {
+        rtBuildInfo(
+          captureEnv: true
+        )
         rtPublishBuildInfo (
           serverId: 'JFrogCloud',
           // The buildName and buildNumber below are optional. If you do not set them, the Jenkins job name is used
