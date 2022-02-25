@@ -42,12 +42,12 @@ pipeline {
               artifacts: "**/*"
             )
             zip (
-              zipFile: "package/core-linux-sources.zip"
+              zipFile: "package/core-linux-sources.zip",
               archive: true,
               overwrite: true,
               dir: '.',
               exclude: '',
-              glob: '',
+              glob: ''
             )
           }
         }
