@@ -2,14 +2,14 @@ pipeline {
   agent any
 
   environment{
-    JFROG_SERVER = "JFrogCloud"
-    JFROG_REPO = "mecontrol-playground-develop"
-    UPLOAD_BASE_PATH = "jenkins/core-${GIT_BRANCH}/${BUILD_NUMBER}"
-    // jenkins/core-develop/2/core-linux-sources.zip
-
+    MODULE_NAME = "core"
     BUILD_PATH = "build"
     INSTALL_PATH = "${BUILD_PATH}/install"
     PACKAGE_PATH = "${BUILD_PATH}/package"
+
+    JFROG_SERVER = "JFrogCloud"
+    JFROG_REPO = "mecontrol-playground-develop"
+    UPLOAD_BASE_PATH = "jenkins/${MODULE_NAME}-${GIT_BRANCH}/${BUILD_NUMBER}" 
   }
 
   stages {
@@ -45,7 +45,7 @@ pipeline {
       post {
         success {
           zip (
-            zipFile: "${PACKAGE_PATH}/core-linux-package.zip",
+            zipFile: "${PACKAGE_PATH}/${MODULE_NAME}-linux-package.zip",
             archive: true,
             overwrite: true,
             dir: "${INSTALL_PATH}",
@@ -65,7 +65,7 @@ pipeline {
         spec: """{
           "files": [
             {
-              "pattern": "${PACKAGE_PATH}/core-*-*.zip",
+              "pattern": "${PACKAGE_PATH}/${MODULE_NAME}-*-*.zip",
               "target": "${JFROG_REPO}/${env.UPLOAD_BASE_PATH}/"
             }
           ]
