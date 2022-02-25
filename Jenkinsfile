@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   stages {
-    stage("Preperation") {
+    stage("Preparation") {
       steps {
         rtBuildInfo (captureEnv: true)
       }
