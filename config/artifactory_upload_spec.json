@@ -4,9 +4,5 @@
       "pattern": "package/*-Linux.tar.gz",
       "target": "playground-linux-1-mecontrol/"
     },
-    {
-      "pattern": "package/*.zip",
-      "target": "playground-linux-1-mecontrol/"
-    }
  ]
 }
