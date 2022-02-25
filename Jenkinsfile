@@ -32,10 +32,8 @@ pipeline {
 
   post {
     success {
-        rtBuildInfo(
-          captureEnv: true
-        )
         rtPublishBuildInfo (
+          captureEnv: true,
           serverId: 'JFrogCloud',
           // The buildName and buildNumber below are optional. If you do not set them, the Jenkins job name is used
           // as the build name. The same goes for the build number.
@@ -61,5 +59,5 @@ pipeline {
         )
     }
   }
-  
+
 }
